@@ -32,6 +32,7 @@ const SMART_FUNDING_SOURCES = [
   FUNDING.SATISPAY,
   FUNDING.PAIDY,
   FUNDING.CARD,
+  "atomicwallet",
 ];
 
 const SMART_CARDS = [
