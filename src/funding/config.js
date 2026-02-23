@@ -29,9 +29,12 @@ import { getMercadopagoConfig } from "./mercadopago";
 import { getMultibancoConfig } from "./multibanco";
 import { getSatispayConfig } from "./satispay";
 import { getPaidyConfig } from "./paidy";
+import { getAtomicWalletConfig } from "./atomicwallet";
+
+export const FUNDING_ATOMICWALLET = ("atomicwallet": "atomicwallet");
 
 export function getFundingConfig(): {
-  [$Values<typeof FUNDING>]: ?FundingSourceConfig,
+  [$Values<typeof FUNDING> | typeof FUNDING_ATOMICWALLET]: ?FundingSourceConfig,
 } {
   return inlineMemoize(getFundingConfig, () => {
     return {
@@ -61,6 +64,7 @@ export function getFundingConfig(): {
       [FUNDING.MULTIBANCO]: getMultibancoConfig(),
       [FUNDING.SATISPAY]: getSatispayConfig(),
       [FUNDING.PAIDY]: getPaidyConfig(),
+      [FUNDING_ATOMICWALLET]: getAtomicWalletConfig(),
     };
   });
 }
